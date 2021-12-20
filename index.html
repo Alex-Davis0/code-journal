@@ -14,10 +14,21 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body class="container">
+  <header class="row">
+    <h3>Code Journal</h3>
   </header>
-  <main>
+  <main class="row">
+    <div data-view="entry-form">
+      <form action="entry-form" method="get">
+        <h1>New Entry</h1>
+        <div class="column-half"><img src="images/placeholder-image-square.jpg" alt="placeholder"></div>
+        <div><h5>Title</h5><input type="text" name="Title">
+          <h5>Photo URL</h5><input type="url" name="Photo URL"></div>
+        <div class="column-full"><h5>Notes</h5> <textarea name="NOtes" id="" cols="30" rows="10"></textarea></div>
+        <button>SAVE</button>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
