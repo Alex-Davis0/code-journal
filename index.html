@@ -14,19 +14,20 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="container">
-  <header class="row">
-    <h3>Code Journal</h3>
+<body class="container page-background">
+  <header class="row header-background">
+    <h3 class="text-color">Code Journal</h3>
   </header>
-  <main class="row">
+  <main>
     <div data-view="entry-form">
-      <form action="entry-form" method="get">
-        <h1>New Entry</h1>
-        <div class="column-half"><img src="images/placeholder-image-square.jpg" alt="placeholder"></div>
-        <div><h5>Title</h5><input type="text" name="Title">
-          <h5>Photo URL</h5><input type="url" name="Photo URL"></div>
-        <div class="column-full"><h5>Notes</h5> <textarea name="NOtes" id="" cols="30" rows="10"></textarea></div>
-        <button>SAVE</button>
+      <form action="entry-form" method="get" class="row form">
+        <div class="column-full code-jorn"><h1>New Entry</h1></div>
+        <div class="column-half"><img src="images/placeholder-image-square.jpg" alt="placeholder" class="img"></div>
+        <div class="column-half"><h5 class="title">Title</h5><input type="text" name="Title" class="input">
+          <h5 class="title">Photo URL</h5><input type="url" name="Photo URL" class="input"></div>
+        <div class="column-full"><h5 class="title notes-title">Notes</h5></div>
+        <div class="column-full"><input type="text" name="Notes" class="notes-input"></div>
+        <div class="column-full button-postion"><button class="button">SAVE</button></div>
       </form>
     </div>
   </main>

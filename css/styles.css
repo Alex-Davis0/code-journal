@@ -1,0 +1,36 @@
+.page-background {
+  background-color: rgb(240, 240, 240);
+}
+
+.header-background {
+  background-color: #562b81;
+  background-size: in;
+}
+
+.text-color {
+  color: white;
+}
+
+.img {
+  height: 350px;
+  width: auto;
+}
+
+.title {
+  margin-bottom: 0;
+}
+
+.input {
+  width: 15rem;
+}
+
+.notes-input {
+  width: 80%;
+  height: 100px;
+}
+
+.button {
+  background-color: #562b81;
+  color: white;
+  border-radius: 5px;
+}
