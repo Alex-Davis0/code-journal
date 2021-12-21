@@ -21,13 +21,26 @@
   <main>
     <div data-view="entry-form">
       <form action="entry-form" method="get" class="row form">
-        <div class="column-full code-jorn"><h1>New Entry</h1></div>
-        <div class="column-half"><img src="images/placeholder-image-square.jpg" alt="placeholder" class="img"></div>
-        <div class="column-half"><h5 class="title">Title</h5><input type="text" name="Title" class="input">
-          <h5 class="title">Photo URL</h5><input type="url" name="Photo URL" class="input"></div>
-        <div class="column-full"><h5 class="title notes-title">Notes</h5></div>
-        <div class="column-full"><input type="text" name="Notes" class="notes-input"></div>
-        <div class="column-full button-postion"><button class="button">SAVE</button></div>
+        <div class="column-full code-jorn">
+          <h1>New Entry</h1>
+        </div>
+        <div class="column-half">
+          <img src="images/placeholder-image-square.jpg" alt="placeholder" class="img">
+        </div>
+        <div class="column-half">
+          <h3 class="title">Title</h3>
+          <input type="text" name="Title" class="input">
+          <h3 class="title">Photo URL</h3>
+          <input type="url" name="Photo URL" class="input">
+        </div>
+        <div class="column-full">
+          <h3 class="title notes-title">Notes</h3>
+        </div>
+        <div class="column-full">
+          <textarea name="Note" class="notes"></textarea>
+        </div>
+        <div class="column-full button-flex">
+          <button class="button">SAVE</button></div>
       </form>
     </div>
   </main>
