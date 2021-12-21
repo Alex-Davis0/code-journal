@@ -4,7 +4,6 @@
 
 .header-background {
   background-color: #562b81;
-  background-size: in;
 }
 
 .text-color {
@@ -12,8 +11,9 @@
 }
 
 .img {
-  height: 350px;
-  width: auto;
+  height: auto;
+  width: 100%;
+  border-radius: 5px;
 }
 
 .title {
@@ -22,7 +22,7 @@
 
 .input {
   width: 100%;
-  height: max-content;
+  height: 35px;
 }
 
 .notes {
