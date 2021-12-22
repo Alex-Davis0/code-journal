@@ -14,10 +14,35 @@
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-  <header>
+<body class="container page-background">
+  <header class="row header-background">
+    <h3 class="text-color">Code Journal</h3>
   </header>
   <main>
+    <div data-view="entry-form">
+      <form action="" method="get" class="row form">
+        <div class="column-full code-jorn">
+          <h1>New Entry</h1>
+        </div>
+        <div class="column-half">
+          <img src="images/placeholder-image-square.jpg" alt="placeholder" class="img">
+        </div>
+        <div class="column-half">
+          <h3 class="title">Title</h3>
+          <input type="text" name="Title" class="input" required>
+          <h3 class="title">Photo URL</h3>
+          <input type="url" name="photoUrl" class="input photo-url" required>
+        </div>
+        <div class="column-full">
+          <h3 class="title">Notes</h3>
+        </div>
+        <div class="column-full">
+          <textarea name="Note" class="notes" required></textarea>
+        </div>
+        <div class="column-full button-flex">
+          <button type="submit" class="button">SAVE</button></div>
+      </form>
+    </div>
   </main>
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
