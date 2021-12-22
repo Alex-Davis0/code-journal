@@ -14,5 +14,5 @@ if (datacheck !== null) {
 
 window.addEventListener('beforeunload', function (event) {
   var $data = JSON.stringify(data);
-  this.localStorage.setItem('data-profile', $data);
+  this.localStorage.setItem('enrties', $data);
 });
