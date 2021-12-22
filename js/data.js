@@ -7,12 +7,12 @@ var data = {
   nextEntryId: 1
 };
 
-window.addEventListener('beforeunload', function (event) {
-  var datacheck = this.localStorage.getItem('enrties');
-  if (datacheck !== null) {
-    datacheck = JSON.parse(data);
-  }
+var datacheck = this.localStorage.getItem('enrties');
+if (datacheck !== null) {
+  datacheck = JSON.parse(data);
+}
 
+window.addEventListener('beforeunload', function (event) {
   var $data = JSON.stringify(data);
   this.localStorage.setItem('data-profile', $data);
 });
