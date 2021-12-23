@@ -9,7 +9,7 @@ var data = {
 
 var datacheck = this.localStorage.getItem('entries');
 if (datacheck !== null) {
-  datacheck = JSON.parse(data);
+  data = JSON.parse(datacheck);
 }
 
 window.addEventListener('beforeunload', function (event) {
