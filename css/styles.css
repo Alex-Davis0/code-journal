@@ -4,10 +4,17 @@
 
 .header-background {
   background-color: #562b81;
+  display: flex;
+  align-items: baseline;
 }
 
 .text-color {
   color: white;
+}
+
+.link {
+  text-decoration: none;
+  margin-left: 10px;
 }
 
 .img {
@@ -36,6 +43,7 @@
   background-color: #562b81;
   color: white;
   border-radius: 5px;
+  height: fit-content;
 }
 
 .ul {

@@ -3,6 +3,8 @@
 
 var $url = document.querySelector('.photo-url');
 var $img = document.querySelector('.img');
+var $entryform = document.getElementById('entry-form');
+var $entries = document.getElementById('entries-page');
 
 $url.addEventListener('input', function (event) {
 
@@ -19,12 +21,17 @@ $form.addEventListener('submit', function (event) {
     title: $form.elements.Title.value,
     photourl: $form.elements.photoUrl.value,
     notes: $form.elements.Note.value
-
   };
-  data.entries.upshift(formvalue);
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
   data.nextEntryId++;
+
+  data.entries.unshift(formvalue);
+  $ul.prepend(createEntries(data.entries[0]));
+  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+
   $form.reset();
+  $entryform.classList.add('hidden');
+  $entries.classList.remove('hidden');
 });
 
 function createEntries(entry) {
@@ -58,7 +65,40 @@ function createEntries(entry) {
 
 var $ul = document.querySelector('.ul');
 
-for (var i = 0; i < data.entries.length; i++) {
-  var entry = createEntries(data.entries[i]);
-  $ul.appendChild(entry);
+function load(event) {
+  for (var i = data.entries.length - 1; i >= 0; i--) {
+    $ul.prepend(createEntries(data.entries[i]));
+  }
+  if (data.view === 'entries') {
+    $entryform.classList.add('hidden');
+    $entries.classList.remove('hidden');
+  } else if (data.view === 'entry-form') {
+    $entryform.classList.remove('hidden');
+    $entries.classList.add('hidden');
+  }
 }
+
+window.addEventListener('DOMContentLoaded', load);
+
+var $entry = document.getElementById('entries');
+var $new = document.getElementById('new');
+var $view = document.querySelectorAll('.view');
+
+function viewswap(event) {
+  if (!event.target.matches('.link')) {
+    return;
+  }
+
+  var data = event.target.getAttribute('data-view');
+
+  for (var view of $view) {
+    if (view.getAttribute('data-view') === data) {
+      view.classList.remove('hidden');
+    } else {
+      view.classList.add('hidden');
+    }
+  }
+}
+
+$entry.addEventListener('click', viewswap);
+$new.addEventListener('click', viewswap);
