@@ -23,6 +23,12 @@
   justify-content: flex-end;
 }
 
+.new-flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
 @media screen and (min-width: 768px) {
   .container {
     max-width: 900px;

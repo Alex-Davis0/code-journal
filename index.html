@@ -15,13 +15,18 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body class="container page-background">
-  <header class="row header-background">
-    <h3 class="text-color">Code Journal</h3>
+  <header class="row text-color header-background ">
+    <div>
+      <h3 class="">Code Journal</h3>
+    </div>
+    <nav>
+      <a href="#" id="entries" class=" link text-color" data-view="entries">Entries</a>
+    </nav>
   </header>
   <main>
-    <div data-view="entry-form">
+    <div class="view" id="entry-form" data-view="entry-form">
       <form action="" method="get" class="row form">
-        <div class="column-full code-jorn">
+        <div class="column-full">
           <h1>New Entry</h1>
         </div>
         <div class="column-half">
@@ -40,8 +45,21 @@
           <textarea name="Note" class="notes" required></textarea>
         </div>
         <div class="column-full button-flex">
-          <button type="submit" class="button">SAVE</button></div>
+          <button type="submit" class="button">SAVE</button>
+        </div>
       </form>
+    </div>
+    <div class="view hidden" id="entries-page" data-view="entries">
+      <div class="container">
+        <div class="row">
+          <div class="column-full new-flex">
+            <h2>Entries</h2>
+            <button id="new" class="link button" data-view="entry-form">NEW</button>
+          </div>
+        </div>
+        <ul class="ul">
+        </ul>
+      </div>
     </div>
   </main>
   <script src="js/data.js"></script>
