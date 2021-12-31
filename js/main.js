@@ -37,6 +37,7 @@ $form.addEventListener('submit', function (event) {
 function createEntries(entry) {
   var li = document.createElement('li');
   li.setAttribute('class', 'row');
+  li.setAttribute('data-entry-id', entry.entryId);
 
   var imgdiv = document.createElement('div');
   imgdiv.setAttribute('class', 'column-half');
@@ -51,10 +52,14 @@ function createEntries(entry) {
   textdiv.setAttribute('class', 'column-half');
   li.appendChild(textdiv);
 
-  var texth3 = document.createElement('h3');
-  texth3.setAttribute('class', 'title');
-  texth3.textContent = entry.title;
-  textdiv.appendChild(texth3);
+  var texth2 = document.createElement('h2');
+  texth2.setAttribute('class', 'title');
+  texth2.textContent = entry.title;
+  textdiv.appendChild(texth2);
+
+  var edit = document.createElement('button');
+  edit.setAttribute('class', 'fas fa-pen');
+  texth2.append(edit);
 
   var textp = document.createElement('p');
   textp.setAttribute('class', 'text');
@@ -102,3 +107,6 @@ function viewswap(event) {
 
 $entry.addEventListener('click', viewswap);
 $new.addEventListener('click', viewswap);
+$ul.addEventListener('click', function (event) {
+
+});
