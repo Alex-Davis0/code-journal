@@ -20,14 +20,14 @@
       <h1>Code Journal</h1>
     </div>
     <nav>
-      <a href="#" id="entries" class=" link text-color font-size2" data-view="entries">Entries</a>
+      <a href="#" id="entries" class=" edit text-color font-size2" data-view="entries">Entries</a>
     </nav>
   </header>
   <main>
-    <div class="view" id="entry-form" data-view="entry-form">
-      <form action="" method="get" class="row form">
+    <div class="view" data-view="entry-form">
+      <form action="" method="get" class="row form" id="entry-form">
         <div class="column-full">
-          <h2>New Entry</h2>
+          <h2 id="entry-title">New Entry</h2>
         </div>
         <div class="column-half">
           <img src="images/placeholder-image-square.jpg" alt="placeholder" class="img">
@@ -54,11 +54,14 @@
         <div class="row">
           <div class="column-full new-flex">
             <h2 class="font-size">Entries</h2>
-            <button id="new" class="link button" data-view="entry-form">NEW</button>
+            <button id="new" class="edit button" data-view="entry-form">NEW</button>
           </div>
         </div>
         <ul class="ul">
         </ul>
+        <div id="no-entries">
+          <p>No Entries</p>
+        </div>
       </div>
     </div>
   </main>
