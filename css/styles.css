@@ -12,7 +12,15 @@
   color: white;
 }
 
-.link {
+.font-size {
+  font-size: 2rem;
+}
+
+.font-size2 {
+  font-size: 1.25rem;
+}
+
+.edit {
   text-decoration: none;
   margin-left: 10px;
 }
@@ -48,4 +56,11 @@
 
 .ul {
   padding: 0;
+}
+
+.fas {
+  border: none;
+  color: #562b81;
+  float: right;
+  font-size: x-large;
 }
