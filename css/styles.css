@@ -1,66 +1,126 @@
-.page-background {
-  background-color: rgb(240, 240, 240);
-}
-
-.header-background {
-  background-color: #562b81;
-  display: flex;
-  align-items: baseline;
-}
-
-.text-color {
-  color: white;
-}
-
-.font-size {
-  font-size: 2rem;
-}
-
-.font-size2 {
-  font-size: 1.25rem;
-}
-
-.edit {
-  text-decoration: none;
-  margin-left: 10px;
-}
-
 .img {
+  max-width: 100%;
   height: auto;
-  width: 100%;
   border-radius: 5px;
 }
 
-.title {
-  margin-bottom: 0;
-}
-
-.input {
-  width: 100%;
-  height: 35px;
+header {
+  background-color: rgb(95, 32, 95);
+  color: white;
+  font-family: sans-serif;
 }
 
 .notes {
   width: 100%;
   height: 100px;
   box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  font-size: 16px;
   resize: none;
 }
 
 .button {
-  background-color: #562b81;
-  color: white;
   border-radius: 5px;
-  height: fit-content;
+  background-color: rgb(95, 32, 95);
+  color: white;
+  height: 25px;
 }
 
-.ul {
-  padding: 0;
+.input {
+  width: 100%;
+  height: 30px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
 }
 
-.fas {
-  border: none;
-  color: #562b81;
+.title {
+  margin-bottom: 0;
+}
+
+.align {
+  align-items: baseline;
+  display: flex;
+}
+
+#entries-link {
+  color: inherit;
+  padding-left: 1.5rem;
+  text-decoration: none;
+  font-size: 1.25rem;
+}
+
+.align-new {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.text-size {
+  font-size: 2rem;
+}
+
+.edit-icon {
   float: right;
-  font-size: x-large;
+  color: rgb(95, 32, 95);
+  text-decoration: none;
+}
+
+.delete-button {
+  border: none;
+  color: rgb(238, 88, 88);
+  text-decoration: underline rgb(238, 88, 88);
+  font-size: 18px;
+}
+
+.delete-button:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.modal-on {
+  background-color: rgb(0, 0, 0, 0.6);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-box {
+  font-family: Mukta, sans-serif;
+  background-color: #f0f0f0;
+  color: black;
+  border-radius: 5px;
+  text-align: center;
+  margin: 0 20px;
+  padding-top: 20px;
+  box-shadow: 0 3px 5px black;
+}
+
+.cancel-button {
+  background-color: #b6b6b6;
+  font-size: 18px;
+  color: black;
+  width: 120px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+.confirm-button {
+  background-color: #dc2626;
+  font-size: 18px;
+  letter-spacing: 2;
+  color: white;
+  width: 120px;
+  height: 45px;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
 }

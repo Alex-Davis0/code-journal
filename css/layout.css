@@ -13,20 +13,23 @@
   flex-wrap: wrap;
 }
 
+.space-between {
+  justify-content: space-between;
+}
+
+.save-button {
+  align-items: flex-end;
+}
+
 .column-full,
 .column-half {
   width: 100%;
 }
 
-.button-flex {
+.button-div {
   display: flex;
   justify-content: flex-end;
-}
-
-.new-flex {
-  display: flex;
-  justify-content: space-between;
-  align-items: baseline;
+  padding-top: 15px;
 }
 
 @media screen and (min-width: 768px) {

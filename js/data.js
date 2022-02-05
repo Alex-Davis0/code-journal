@@ -6,22 +6,12 @@ var data = {
   editing: null,
   nextEntryId: 1
 };
-
-var $view = document.querySelectorAll('.view');
-
-var datacheck = this.localStorage.getItem('entries');
-if (datacheck !== null) {
-  data = JSON.parse(datacheck);
+var previousEntriesJSON = localStorage.getItem('data-storage');
+if (previousEntriesJSON !== null) {
+  data = JSON.parse(previousEntriesJSON);
 }
-
-function before(event) {
-  for (var view of $view) {
-    if (!view.classList.contains('hidden')) {
-      data.view = view.getAttribute('data-view');
-    }
-  }
-  var $data = JSON.stringify(data);
-  this.localStorage.setItem('entries', $data);
+function beforeunloadContent(event) {
+  var savedData = JSON.stringify(data);
+  localStorage.setItem('data-storage', savedData);
 }
-
-window.addEventListener('beforeunload', before);
+window.addEventListener('beforeunload', beforeunloadContent);

@@ -1,135 +1,164 @@
 /* global data */
 /* exported data */
-
-var $url = document.querySelector('.photo-url');
-var $img = document.querySelector('.img');
+var $photo = document.querySelector('.photoUrl');
+var $image = document.querySelector('.img');
 var $entryForm = document.getElementById('entry-form');
-var $entryPage = document.getElementById('entry-title');
+var $entryPage = document.getElementById('entry-page');
 var $noEntriesText = document.querySelector('#no-entries');
 var $ul = document.querySelector('ul');
-var $view = document.querySelectorAll('.view');
-var $form = document.querySelector('.form');
-
+var $nodeList = document.querySelectorAll('.view');
+var $delete = document.querySelector('.delete-button');
+var $saveRow = document.querySelector('#save-row');
+var $modal = document.querySelector('#modal');
+var $cancel = document.querySelector('.cancel-button');
+var $confirm = document.querySelector('.confirm-button');
 function updateImg(event) {
-  $img.setAttribute('src', $url.value);
+  $image.setAttribute('src', $photo.value);
 }
-
+var $form = document.querySelector('.form');
 function handleSubmit(event) {
   event.preventDefault();
   var entry = {
     entryId: data.nextEntryId,
     title: $form.elements.Title.value,
     photoUrl: $form.elements.photoUrl.value,
-    notes: $form.elements.Note.value
+    notes: $form.elements.Notes.value
   };
   if (data.editing === null) {
     data.nextEntryId++;
     data.entries.unshift(entry);
-    var newEntry = createEntries(entry);
+    var newEntry = renderEntries(entry);
     $ul.prepend(newEntry);
   }
   for (var i = 0; i < data.entries.length; i++) {
     if (data.editing === data.entries[i].entryId) {
-
       data.entries[i].title = entry.title;
       data.entries[i].photoUrl = entry.photoUrl;
       data.entries[i].notes = entry.notes;
       updateImg();
-      var editedEntry = createEntries(entry);
+      var editedEntry = renderEntries(entry);
       $ul.children[i].replaceWith(editedEntry);
       data.editing = null;
     }
   }
-
-  $img.setAttribute('src', './images/placeholder-image-square.jpg');
+  $image.setAttribute('src', './images/placeholder-image-square.jpg');
   $form.reset();
   $noEntriesText.className = 'hidden';
   swapView('entries');
 }
-
-function createEntries(entry) {
+function renderEntries(entry) {
   var li = document.createElement('li');
   li.setAttribute('class', 'row');
   li.setAttribute('data-entry-id', entry.entryId);
-
-  var imgdiv = document.createElement('div');
-  imgdiv.setAttribute('class', 'column-half');
-  li.appendChild(imgdiv);
-
-  var img = document.createElement('img');
-  img.setAttribute('src', entry.photoUrl);
-  img.setAttribute('class', 'img');
-  imgdiv.appendChild(img);
-
-  var textdiv = document.createElement('div');
-  textdiv.setAttribute('class', 'column-half');
-  li.appendChild(textdiv);
-
-  var texth2 = document.createElement('h2');
-  texth2.setAttribute('class', 'title');
-  texth2.textContent = entry.title;
-  textdiv.appendChild(texth2);
-
-  var edit = document.createElement('a');
-  edit.setAttribute('class', 'fas fa-pen edit');
-  edit.setAttribute('href', '#');
-  edit.setAttribute('data-entry-id', entry.entryId);
-  texth2.append(edit);
-
-  var textp = document.createElement('p');
-  textp.setAttribute('class', 'text');
-  textp.textContent = entry.notes;
-  textdiv.appendChild(textp);
+  var divImg = document.createElement('div');
+  divImg.setAttribute('class', 'column-half');
+  li.appendChild(divImg);
+  var image = document.createElement('img');
+  image.setAttribute('class', 'img');
+  image.setAttribute('src', entry.photoUrl);
+  divImg.appendChild(image);
+  var divText = document.createElement('div');
+  divText.setAttribute('class', 'column-half');
+  li.appendChild(divText);
+  var h2Title = document.createElement('h2');
+  h2Title.setAttribute('class', '');
+  h2Title.textContent = entry.title;
+  divText.appendChild(h2Title);
+  var editIcon = document.createElement('a');
+  editIcon.setAttribute('class', 'fas fa-pen edit-icon');
+  editIcon.setAttribute('href', '#');
+  editIcon.setAttribute('data-entry-id', entry.entryId);
+  editIcon.setAttribute('data-view', 'entry-form');
+  h2Title.appendChild(editIcon);
+  var pText = document.createElement('p');
+  pText.setAttribute('class', '');
+  pText.textContent = entry.notes;
+  divText.appendChild(pText);
   return li;
 }
-
 function appendDom(entry) {
   swapView(data.view);
   if (data.entries.length !== 0) {
     $noEntriesText.className = 'hidden';
   }
   for (var i = 0; i < data.entries.length; i++) {
-    var returnObject = createEntries(data.entries[i]);
+    var returnObject = renderEntries(data.entries[i]);
     $ul.appendChild(returnObject);
   }
 }
 function swapView(string) {
   data.view = string;
-  for (var i = 0; i < $view.length; i++) {
-    if ($view[i].getAttribute('data-view') === string) {
-      $view[i].className = 'view';
+  if (string === 'entries') {
+    data.editing = null;
+  }
+  for (var i = 0; i < $nodeList.length; i++) {
+    if ($nodeList[i].getAttribute('data-view') === string) {
+      $nodeList[i].className = 'view';
     } else {
-      $view[i].className = 'hidden';
+      $nodeList[i].className = 'hidden';
     }
   }
 }
-
 function dataView(event) {
   var dataViewValue = event.target.getAttribute('data-view');
   if (dataViewValue === null) {
     return;
   }
-  swapView(dataViewValue);
-}
-function handleEdit(event) {
-  if (event.target.matches('.edit')) {
-    swapView('entry-form');
+  var entry = event.target.closest('[data-entry-id]');
+  if (entry !== null) {
     $entryPage.textContent = 'Edit Entry';
+    $delete.className = 'delete-button';
+    $saveRow.className = 'column-full row space-between';
     var dataEntryIdNum = parseInt(event.target.getAttribute('data-entry-id'));
     data.editing = dataEntryIdNum;
     for (var i = 0; i < data.entries.length; i++) {
       if (data.editing === data.entries[i].entryId) {
         $entryForm.elements.Title.value = data.entries[i].title;
         $entryForm.elements.photoUrl.value = data.entries[i].photoUrl;
-        $entryForm.elements.Note.value = data.entries[i].notes;
+        $entryForm.elements.Notes.value = data.entries[i].notes;
         updateImg();
+      }
+    }
+  } else if (dataViewValue === 'entry-form') {
+    $entryForm.reset();
+    $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
+    $entryPage.textContent = 'New Entry';
+    $delete.className = 'hidden';
+    $saveRow.className = 'column-full row';
+  }
+  swapView(dataViewValue);
+}
+function handleDelete(event) {
+  if (event.target === $delete) {
+    $modal.className = 'row modal-on';
+  }
+  if (event.target === $cancel) {
+    $modal.className = 'row hidden';
+  }
+}
+function handleModalButtons(event) {
+  if (event.target === $cancel) {
+    $modal.className = 'row hidden';
+  }
+  if (event.target === $confirm) {
+    var entry = data.editing;
+    for (var i = 0; i < data.entries.length; i++) {
+      if (entry === data.entries[i].entryId) {
+        $ul.children[i].remove();
+        data.entries.splice(data.entries[i], 1);
+        entry = null;
+        $modal.className = 'row hidden';
+        swapView('entries');
+        if (data.entries.length === 0) {
+          $noEntriesText.className = 'column-full no-entries';
+        }
       }
     }
   }
 }
-
-$ul.addEventListener('click', handleEdit);
+$modal.addEventListener('click', handleModalButtons);
+$delete.addEventListener('click', handleDelete);
 document.addEventListener('click', dataView);
 document.addEventListener('DOMContentLoaded', appendDom);
-$url.addEventListener('input', updateImg);
+$photo.addEventListener('input', updateImg);
 $entryForm.addEventListener('submit', handleSubmit);
